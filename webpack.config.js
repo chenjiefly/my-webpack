@@ -1,23 +1,30 @@
-// var fs = require('fs')
-// var path = require('path')
+var fs = require('fs')
+var path = require('path')
 
 var webpack = require('webpack')
 // var extractTextPlugin = require('extract-text-webpack-plugin')  // 独立打包样式文件
 
-// var ROOT = __dirname
-// var srcDir = path.resolve(ROOT, 'src')
+var srcPath = path.resolve(__dirname, 'src')
+var distPath = path.resolve(__dirname, 'dist')
 
 // 创建入口文件集合对象
 function makeEntry() {
-  return {
-    demo01: './src/demo01/index.js'
-  }
+  var entrys = {}
+  var pages = fs.readdirSync(srcPath)
+
+  pages.forEach(function(page) {
+    if (page) {
+      entrys[page] = path.resolve(srcPath, page, 'index.js')
+    }
+  })
+
+  return entrys
 }
 
 module.exports = {
   entry: makeEntry(),
   output: {
-    path: './dist/',
+    path: distPath,
     filename: '[name]/bundle.js'
     // publicPath: "/assets/"
   },
@@ -34,6 +41,10 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.less$/,
+        loader: "style!css!less"
+      },
+      {
         test: /\.(png|jpg)$/,
         loader: 'url',
         query: {
@@ -46,7 +57,7 @@ module.exports = {
     ]
   },
   // resolve: {
-  //   root: srcDir,  //绝对路径
+  //   root: srcPath,  //绝对路径
   //   extensions: ['', '.js', '.json', '.scss'],
   //   alias: {
   //     // 模块映射表

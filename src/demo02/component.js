@@ -5,6 +5,6 @@ let showMyName = (name) => {
 }
 
 module.exports = function(){
-  showMyName('demo01')
-  alert('component demo01')
+  showMyName('demo02')
+  alert('component demo02')
 }
