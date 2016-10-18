@@ -1,11 +1,13 @@
-var fs = require('fs')
-var path = require('path')
+const fs = require('fs')
+const path = require('path')
 
-var webpack = require('webpack')
+const webpack = require('webpack')
 // var extractTextPlugin = require('extract-text-webpack-plugin')  // 独立打包样式文件
 
 var srcPath = path.resolve(__dirname, 'src')
 var distPath = path.resolve(__dirname, 'dist')
+
+console.log('正在进行webpack编译...');
 
 // 创建入口文件集合对象
 function makeEntry() {
@@ -75,12 +77,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
 
     // 抽取公共模块
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'common',  // chunkname
-    //   filename: 'js/common.js',  // 输出文件名
-    //   minChunks: 2,  // 至少被2个以上的模块引用才会被抽取为公共模块,
-    //   chunks: makeEntry()
-    // }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',  // chunkname
+      filename: 'js/common.js',  // 输出文件名
+      minChunks: 3,  // 至少被2个以上的模块引用才会被抽取为公共模块,
+      chunks: makeEntry()
+    })
 
     // // 单独提取样式文件
     // new extractTextPlugin('[name].css')
