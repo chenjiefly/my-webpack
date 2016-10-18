@@ -1,3 +1,5 @@
+// 在build之前，先把dist目录下的内容全部删除
+
 const del = require('del')
 
 del([
