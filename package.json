@@ -4,9 +4,10 @@
   "description": "webpack简易工程",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --watch --profile",
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "start": "npm run dev",
+    "dev": "./node_modules/.bin/webpack-dev-server",
+    "build": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "webpack"
@@ -27,5 +28,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1"
   }
 }
