@@ -4,7 +4,7 @@ const path = require('path')
 const webpack = require('webpack')
 // var extractTextPlugin = require('extract-text-webpack-plugin')  // 独立打包样式文件
 
-var srcPath = path.resolve(__dirname, 'src')
+var srcPath = path.resolve(__dirname, 'pages')
 var distPath = path.resolve(__dirname, 'dist')
 
 console.log('正在进行webpack编译...');
