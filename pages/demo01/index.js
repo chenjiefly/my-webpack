@@ -1,4 +1,8 @@
 require('./index.less')
 
-var component = require('./component.js');
-component();
+import utilLog from 'util/log'
+
+var component = require('./component.js')
+component()
+
+utilLog()
